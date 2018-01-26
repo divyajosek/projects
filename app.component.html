@@ -1,0 +1,34 @@
+<app-header></app-header>
+
+<h2>{{title}}</h2>
+
+<div>
+  <h3>Add Employee</h3>
+  <p>Name : <input type="text" #name></p>
+  <p>Age : <input type="text" #age></p>
+  <p><button (click)="addEmployee(name.value,age.value)">Add</button></p>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>View</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employees">
+      <td>{{emp.name}}</td>
+      <td>{{emp.age}}</td>
+      <td><button (click)="selectedEmployee(emp)">View</button></td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="selectEmp">
+  <h3>  Selected Employees </h3>
+  <p>Name : {{selectEmp.name}}</p>
+  <p>Age : {{selectEmp.age}}</p>
+</div>
+
+<app-footer></app-footer>
