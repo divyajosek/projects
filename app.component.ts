@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
 
+interface Employee{
+  name:string;
+  age:number;
+  selected ?:boolean;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,7 +14,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Divya Angular training Class';
   selectEmp;
-  employees=[
+  newEmployee:Employee={name:'',age:null};
+  employees:Array<Employee>=[
     {
       name:'Divya',
       age:25
@@ -19,11 +26,17 @@ export class AppComponent {
     }
   ]
 
+  clearSelections(){
+    this.employees.forEach(emp => emp.selected=false);
+  }
+
   selectedEmployee(emp){
+    this.clearSelections();
+    emp.selected=true;
     this.selectEmp=emp;
   }
 
-  addEmployee(name,age){
-    this.employees.push({name,age});
+  addEmployee(){
+    this.employees.push(this.newEmployee);
   }
 }
