@@ -4,9 +4,9 @@
 
 <div>
   <h3>Add Employee</h3>
-  <p>Name : <input type="text" #name></p>
-  <p>Age : <input type="text" #age></p>
-  <p><button (click)="addEmployee(name.value,age.value)">Add</button></p>
+  <p>Name : <input type="text" [(ngModel)]="newEmployee.name"></p>
+  <p>Age : <input type="text" [(ngModel)]="newEmployee.age"></p>
+  <p><button (click)="addEmployee()">Add</button></p>
 </div>
 
 <table>
@@ -18,7 +18,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let emp of employees">
+    <tr *ngFor="let emp of employees" [ngClass] ="{'selected': emp.selected}">
       <td>{{emp.name}}</td>
       <td>{{emp.age}}</td>
       <td><button (click)="selectedEmployee(emp)">View</button></td>
